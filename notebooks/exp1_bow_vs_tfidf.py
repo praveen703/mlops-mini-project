@@ -1,4 +1,3 @@
-#Baseline model
 import re
 import string
 
@@ -124,6 +123,7 @@ with mlflow.start_run(run_name="All Experiment") as parent_run:
             with mlflow.start_run(run_name=f'{algo_name} with {vec_name}', nested=True) as child_run:
                 X = vectorizer.fit_transform(df['content'])
                 y= df['sentiment']
+
                 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=42)
 
                 # log preprocessing parameters
